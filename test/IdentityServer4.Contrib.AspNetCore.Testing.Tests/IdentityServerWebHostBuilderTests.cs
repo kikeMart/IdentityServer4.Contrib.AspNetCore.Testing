@@ -24,7 +24,7 @@ namespace IdentityServer4.Contrib.AspNetCore.Testing.Tests
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .MinimumLevel.Debug()
-                .WriteTo.RollingFile(Path.Combine(AppContext.BaseDirectory, "Logs",
+                .WriteTo.File(Path.Combine(AppContext.BaseDirectory, "Logs",
                     $"{Assembly.GetExecutingAssembly().GetName().Name}.log"))
                 .WriteTo.Console(
                     outputTemplate:

@@ -130,7 +130,7 @@ namespace IdentityServer4.Contrib.AspNetCore.Testing.Tests
             var identityServerProxy = new IdentityServerWebHostProxy(webHostBuilder);
 
             var tokenResponse = await identityServerProxy.GetClientAccessTokenAsync(clientConfiguration,
-                new Dictionary<string, string>
+                new Parameters
                 {
                     {"Scope", "api1"}
                 });
@@ -248,7 +248,7 @@ namespace IdentityServer4.Contrib.AspNetCore.Testing.Tests
 
             var tokenResponse = await identityServerProxy.GetResourceOwnerPasswordAccessTokenAsync(clientConfiguration,
                 new UserLoginConfiguration("user", "password"),
-                new Dictionary<string, string>
+                new Parameters
                 {
                     {"Scope", scopes}
                 });
@@ -258,7 +258,7 @@ namespace IdentityServer4.Contrib.AspNetCore.Testing.Tests
 
             var refreshTokenResponse = await identityServerProxy
                 .GetRefreshTokenAsync(clientConfiguration, tokenResponse.RefreshToken,
-                    new Dictionary<string, string>
+                    new Parameters
                     {
                         {"Scope", scopes}
                     });
@@ -520,7 +520,7 @@ namespace IdentityServer4.Contrib.AspNetCore.Testing.Tests
 
             var tokenResponse = await identityServerProxy.GetResourceOwnerPasswordAccessTokenAsync(clientConfiguration,
                 new UserLoginConfiguration("user", "password"),
-                new Dictionary<string, string>
+                new Parameters
                 {
                     {"Scope", "api1 offline_access"}
                 });
@@ -570,7 +570,7 @@ namespace IdentityServer4.Contrib.AspNetCore.Testing.Tests
             var scopes = new[] {"api1", "offline_access", "openid", "profile"};
 
             var tokenResponse = await identityServerProxy.GetTokenAsync(clientConfiguration, "Custom",
-                new Dictionary<string, string>
+                new Parameters
                 {
                     {"scope", string.Join(" ", scopes)},
                     {"username", "user"},

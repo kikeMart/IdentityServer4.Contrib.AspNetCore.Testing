@@ -29,7 +29,7 @@ namespace IdentityServer4.Server
         {
             loggerConfiguration.Enrich.FromLogContext()
                 .MinimumLevel.Debug()
-                .WriteTo.RollingFile(Path.Combine(AppContext.BaseDirectory, "Logs",
+                .WriteTo.File(Path.Combine(AppContext.BaseDirectory, "Logs",
                     $"{Assembly.GetExecutingAssembly().GetName().Name}.log"))
                 .WriteTo.Console(
                     outputTemplate:
